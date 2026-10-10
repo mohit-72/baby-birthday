@@ -18,3 +18,5 @@ CUSTOMIZE:
 - Countdown date is in script.js: new Date(2026,9,26,0,0,0). Months start at zero, so 9 is October.
 
 This is a local website. If you upload it to public hosting, anyone with access to the site may view its contents. Keep it local if privacy matters most.
+
+New in this update: Open When You Miss Me message, a click-to-open secret love letter, and a gentle life-partner question that makes clear there is no pressure to answer.
