@@ -17,3 +17,17 @@ h1,h2{font-family:'Playfair Display',Georgia,serif;font-weight:500;letter-spacin
 @keyframes float{0%,100%{translate:0 0}50%{translate:0 -12px}}@keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.12)}30%{transform:scale(1)}45%{transform:scale(1.08)}}@keyframes rise{to{transform:translateY(-160px) rotate(20deg);opacity:0}}
 @media(max-width:700px){.nav{padding:18px 20px}.logo{font-size:14px}.nav-date{font-size:8px}.hero{min-height:95svh}.section{padding:78px 20px}.heart-a{left:6%;top:22%;font-size:31px}.heart-b{right:7%;bottom:17%}.reason-grid{grid-template-columns:repeat(2,1fr);gap:10px}.reason{min-height:140px}.memory-card{grid-template-columns:68px 1fr;gap:15px;padding:20px}.memory-date{width:68px;height:75px;border-radius:16px}.memory-date span{font-size:35px}.memory-date small{font-size:7px}.memory-title{font-size:20px}.memory-card p:last-child{font-size:12px}.stamp{width:48px;height:48px;right:15px;top:15px;font-size:7px}.rules h3{font-size:21px;padding-right:43px}.rules ul{font-size:12px}.countdown{gap:7px}.countdown div{padding:15px 2px;border-radius:13px}.countdown span{font-size:8px}.miss-card,.secret-card,.promise-card{padding:24px 18px}.hidden-note{padding:18px;font-size:13px}.promise-card>p{font-size:15px}.letter{font-size:13px;line-height:1.9}.future-card p{font-size:15px}.future-card .future-highlight{font-size:17px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;scroll-behavior:auto!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+
+/* Fix for romantic surprise sections */
+[hidden] {
+  display: none !important;
+}
+
+#missBtn,
+#secretBtn,
+#partnerBtn {
+  cursor: pointer;
+  pointer-events: auto;
+  position: relative;
+  z-index: 2;
+}
