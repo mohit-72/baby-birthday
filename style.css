@@ -26,3 +26,84 @@ h1,h2{font-family:'Playfair Display',Georgia,serif;font-weight:500;letter-spacin
 .dream-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.dream-item{padding:24px 18px;background:#fff;border:1px solid var(--line);border-radius:20px;text-align:center;box-shadow:0 10px 28px #a54b6a08}.dream-item>span{font-size:30px}.dream-item h3{font-family:'Playfair Display',Georgia,serif;font-size:20px;font-weight:500;color:var(--deep);margin:12px 0 8px}.dream-item p{font-size:13px;line-height:1.8;color:var(--muted);margin:0}.dream-foot{text-align:center;color:var(--pink);font-family:'Playfair Display',Georgia,serif;font-style:italic;line-height:1.8;margin:24px auto 0;max-width:650px}
 @media(max-width:700px){.comfort-card,.gift-card,.little-message-card{padding:24px 18px}.dream-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.dream-item{padding:20px 13px}.dream-item h3{font-size:18px}.dream-item p{font-size:12px}.gift-emoji{font-size:64px}}
 @media(max-width:390px){.dream-grid{grid-template-columns:1fr}}
+
+/* Extra dreamy animations: soft blinking, glowing, floating and shimmer */
+.logo span{display:inline-block;animation:heartBlink 1.7s ease-in-out infinite}
+.decor-heart{transform-origin:center;animation:heartFloatGlow 3.6s ease-in-out infinite}
+.heart-b{animation-delay:1.1s}
+.flower,.final-flower,.miss-icon,.envelope,.comfort-icon,.message-moon{animation:softTwinkle 3s ease-in-out infinite}
+.tiny-label,.date-chip{animation:softGlow 3.2s ease-in-out infinite}
+.main-btn,.secondary-btn{position:relative;overflow:hidden;isolation:isolate}
+.main-btn::after,.secondary-btn::after{content:"";position:absolute;top:-60%;left:-45%;width:28%;height:220%;background:linear-gradient(90deg,transparent,#ffffff88,transparent);transform:rotate(24deg);animation:buttonShimmer 4.5s ease-in-out infinite;z-index:-1;pointer-events:none}
+.reason,.dream-item,.memory-card,.letter,.future-card,.miss-card,.secret-card,.promise-card,.comfort-card,.gift-card,.little-message-card{animation:cardBreathe 6s ease-in-out infinite}
+.reason:nth-child(2),.dream-item:nth-child(2){animation-delay:.7s}.reason:nth-child(3),.dream-item:nth-child(3){animation-delay:1.4s}.reason:nth-child(4){animation-delay:2.1s}
+.gift-box:not(.open) .gift-emoji{animation:giftWiggle 2.8s ease-in-out infinite}
+.gift-box.open{animation:giftPop .45s ease-out}
+.stamp{animation:stampGlow 3.4s ease-in-out infinite}
+.big-heart{filter:drop-shadow(0 0 10px #df639955)}
+@keyframes heartBlink{0%,100%{opacity:1;transform:scale(1);filter:drop-shadow(0 0 0 #df639900)}45%{opacity:.55;transform:scale(1.12);filter:drop-shadow(0 0 8px #df6399aa)}65%{opacity:1;transform:scale(1.04)}}
+@keyframes heartFloatGlow{0%,100%{translate:0 0;opacity:.68;filter:drop-shadow(0 0 2px #ef9fbe55)}35%{translate:0 -8px;opacity:1;filter:drop-shadow(0 0 12px #f28cb5)}60%{translate:0 -3px;opacity:.8;filter:drop-shadow(0 0 5px #f28cb5aa)}}
+@keyframes softTwinkle{0%,100%{opacity:.8;transform:scale(1) rotate(0deg);filter:drop-shadow(0 0 0 #f28cb500)}50%{opacity:1;transform:scale(1.08) rotate(4deg);filter:drop-shadow(0 0 9px #f28cb577)}}
+@keyframes softGlow{0%,100%{box-shadow:0 0 0 0 #df639900}50%{box-shadow:0 0 18px 2px #df639922}}
+@keyframes buttonShimmer{0%,65%{left:-45%;opacity:0}72%{opacity:1}90%,100%{left:130%;opacity:0}}
+@keyframes cardBreathe{0%,100%{box-shadow:0 12px 30px #a54b6a08}50%{box-shadow:0 16px 34px #df639916}}
+@keyframes giftWiggle{0%,82%,100%{transform:rotate(0) translateY(0)}86%{transform:rotate(-5deg) translateY(-2px)}90%{transform:rotate(5deg) translateY(-2px)}94%{transform:rotate(-3deg)}97%{transform:rotate(0)}}
+@keyframes giftPop{0%{transform:scale(.96)}65%{transform:scale(1.04)}100%{transform:scale(1)}}
+@keyframes stampGlow{0%,100%{filter:drop-shadow(0 0 0 #df639900)}50%{filter:drop-shadow(0 0 7px #df639966)}}
+@media(prefers-reduced-motion:reduce){.logo span,.decor-heart,.flower,.final-flower,.miss-icon,.envelope,.comfort-icon,.message-moon,.tiny-label,.date-chip,.main-btn::after,.secondary-btn::after,.reason,.dream-item,.memory-card,.letter,.future-card,.miss-card,.secret-card,.promise-card,.comfort-card,.gift-card,.little-message-card,.gift-emoji,.stamp{animation:none!important}.gift-box.open{animation:none!important}}
+
+
+/* More visible animations for the four personal sections */
+.low-section,.gift-section,.little-message-section,.dreams-section{position:relative;isolation:isolate}
+.low-section::before,.gift-section::before,.little-message-section::before,.dreams-section::before{
+ content:"♡  ✦  ♡";position:absolute;top:22px;right:clamp(12px,5vw,54px);z-index:-1;
+ color:#ed79ad;font-size:clamp(22px,3vw,34px);letter-spacing:12px;opacity:.28;
+ animation:personalSparkle 3s ease-in-out infinite;pointer-events:none
+}
+.low-section::after,.gift-section::after,.little-message-section::after,.dreams-section::after{
+ content:"♡";position:absolute;bottom:18px;left:clamp(12px,4vw,42px);color:#ef80b3;
+ font-size:25px;opacity:.35;pointer-events:none;animation:personalFloat 4s ease-in-out infinite
+}
+.comfort-icon,.message-moon{animation:iconPulse 2.2s ease-in-out infinite!important}
+.gift-box:not(.open){animation:giftNudge 3.2s ease-in-out infinite}
+.gift-box:not(.open) .gift-emoji{animation:giftWiggle 2.4s ease-in-out infinite!important}
+.dream-item{position:relative;overflow:hidden;transition:transform .3s ease,box-shadow .3s ease}
+.dream-item:hover{transform:translateY(-6px);box-shadow:0 16px 34px #df63992b}
+.dream-item>span{display:inline-block;animation:iconPulse 2.8s ease-in-out infinite}
+#lowBtn,#giftBtn,#messageBtn{transition:transform .25s ease,box-shadow .25s ease}
+#lowBtn:hover,#giftBtn:hover,#messageBtn:hover{transform:translateY(-3px);box-shadow:0 12px 26px #df639944}
+@keyframes personalSparkle{0%,100%{transform:translateY(0) scale(.92);opacity:.18}50%{transform:translateY(-9px) scale(1.12);opacity:.62}}
+@keyframes personalFloat{0%,100%{transform:translateY(0) rotate(-8deg);opacity:.22}50%{transform:translateY(-14px) rotate(10deg);opacity:.75}}
+@keyframes iconPulse{0%,100%{transform:scale(1);filter:drop-shadow(0 0 0 #ed79ad00)}50%{transform:scale(1.12);filter:drop-shadow(0 0 10px #ed79ad88)}}
+@keyframes giftNudge{0%,86%,100%{transform:translateY(0)}90%{transform:translateY(-5px)}94%{transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.low-section::before,.gift-section::before,.little-message-section::before,.dreams-section::before,.low-section::after,.gift-section::after,.little-message-section::after,.dreams-section::after,.comfort-icon,.message-moon,.gift-box,.gift-box .gift-emoji,.dream-item>span{animation:none!important}.dream-item:hover,#lowBtn:hover,#giftBtn:hover,#messageBtn:hover{transform:none}}
+
+
+/* Always-visible romantic motion for the four personal-touch sections */
+.low-section,.gift-section,.little-message-section,.dreams-section{position:relative;isolation:isolate;overflow:hidden}
+.low-section>* ,.gift-section>* ,.little-message-section>* ,.dreams-section>*{position:relative;z-index:1}
+.low-section::before,.gift-section::before,.little-message-section::before,.dreams-section::before{
+ content:"♡   ✧   ♡";position:absolute;top:22px;right:clamp(14px,5vw,55px);z-index:0;
+ color:#e85f9a;font-size:clamp(25px,3.4vw,38px);letter-spacing:10px;opacity:.48;
+ animation:sectionHearts 3.2s ease-in-out infinite;pointer-events:none
+}
+.low-section::after,.gift-section::after,.little-message-section::after,.dreams-section::after{
+ content:"♡  ✦";position:absolute;bottom:18px;left:clamp(14px,4vw,45px);z-index:0;color:#e85f9a;
+ font-size:27px;letter-spacing:7px;opacity:.42;pointer-events:none;animation:sectionFloat 4.2s ease-in-out infinite
+}
+.comfort-card,.gift-card,.little-message-card{animation:romanticCardGlow 4s ease-in-out infinite}
+.comfort-icon,.message-moon{display:inline-block;animation:romanticIconBeat 2s ease-in-out infinite!important}
+.gift-box:not(.open){animation:romanticGiftNudge 3s ease-in-out infinite!important}
+.gift-box:not(.open) .gift-emoji{animation:romanticGiftWiggle 2.4s ease-in-out infinite!important}
+.dream-item{animation:romanticCardGlow 5s ease-in-out infinite;transition:transform .3s ease,box-shadow .3s ease}
+.dream-item:nth-child(2){animation-delay:.5s}.dream-item:nth-child(3){animation-delay:1s}.dream-item:nth-child(4){animation-delay:1.5s}.dream-item:nth-child(5){animation-delay:2s}.dream-item:nth-child(6){animation-delay:2.5s}
+.dream-item>span{display:inline-block;animation:romanticIconBeat 2.7s ease-in-out infinite}
+#lowBtn,#giftBtn,#messageBtn{transition:transform .25s ease,box-shadow .25s ease}
+#lowBtn:hover,#giftBtn:hover,#messageBtn:hover{transform:translateY(-4px);box-shadow:0 14px 28px #df639955}
+@keyframes sectionHearts{0%,100%{transform:translateY(0) scale(.92);opacity:.3;filter:drop-shadow(0 0 1px #ed79ad)}50%{transform:translateY(-12px) scale(1.12);opacity:.85;filter:drop-shadow(0 0 9px #ed79ad)}}
+@keyframes sectionFloat{0%,100%{transform:translateY(0) rotate(-8deg);opacity:.25}50%{transform:translateY(-17px) rotate(8deg);opacity:.8}}
+@keyframes romanticIconBeat{0%,100%{transform:scale(1);filter:drop-shadow(0 0 0 #ed79ad00)}50%{transform:scale(1.16);filter:drop-shadow(0 0 10px #ed79ad99)}}
+@keyframes romanticGiftNudge{0%,78%,100%{transform:translateY(0) rotate(0)}84%{transform:translateY(-5px) rotate(-2deg)}90%{transform:translateY(0) rotate(2deg)}95%{transform:translateY(-2px) rotate(0)}}
+@keyframes romanticGiftWiggle{0%,80%,100%{transform:rotate(0) scale(1)}85%{transform:rotate(-7deg) scale(1.04)}90%{transform:rotate(7deg) scale(1.04)}95%{transform:rotate(-3deg) scale(1.02)}}
+@keyframes romanticCardGlow{0%,100%{box-shadow:0 10px 28px #a54b6a0a}50%{box-shadow:0 16px 38px #df63992c}}
+@media(prefers-reduced-motion:reduce){.low-section::before,.gift-section::before,.little-message-section::before,.dreams-section::before,.low-section::after,.gift-section::after,.little-message-section::after,.dreams-section::after,.comfort-card,.gift-card,.little-message-card,.comfort-icon,.message-moon,.gift-box,.gift-box .gift-emoji,.dream-item,.dream-item>span{animation:none!important}}
