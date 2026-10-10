@@ -5,31 +5,26 @@ $("startBtn").addEventListener("click",()=>{$("letter").scrollIntoView({behavior
 document.querySelectorAll(".reason").forEach(card=>card.addEventListener("click",()=>{document.querySelectorAll(".reason").forEach(c=>c.classList.remove("active"));card.classList.add("active");$("reasonMessage").textContent=card.dataset.msg;hearts(5)}));
 $("missBtn").addEventListener("click",()=>{const note=$("missNote");note.hidden=!note.hidden;$("missBtn").textContent=note.hidden?"Mere paas aao, Baby ♡":"Ek aur virtual hug le lo ♡";if(!note.hidden){hearts(12);toast("Ek virtual hug, sirf tumhare liye 🤗💗")}});
 $("secretBtn").addEventListener("click",()=>{const note=$("secretNote");note.hidden=!note.hidden;$("secretBtn").textContent=note.hidden?"Secret letter kholo":"Letter phir se band karo ♡";if(!note.hidden){hearts(10);toast("Ye secret sirf tumhare liye hai 💌")}});
-$("partnerBtn").addEventListener("click",()=>{const response=$("partnerResponse");response.hidden=!response.hidden;$("partnerBtn").textContent=response.hidden?"Mera jawab sunogi, Baby? ♡":"YES, MY BABY! ❤️";if(!response.hidden){hearts(24);toast("YES, MY BABY! 💍❤️")}});
-
-// Gentle ambient hearts: lightweight, decorative, and disabled for reduced-motion preferences.
-(function ambientHearts(){
-  if(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  const colors=["#df6393","#f0a3bf","#b69ae8","#ed7c9f","#d9c5f4"];
-  function addHeart(){
-    if(document.hidden) return;
-    const h=document.createElement("span");
-    h.className="ambient-heart"+(Math.random()<0.28?" ambient-heart-glow":"");
-    h.setAttribute("aria-hidden","true");
-    h.textContent=Math.random()<0.55?"♡":"♥";
-    h.style.left=(Math.random()*100)+"vw";
-    h.style.setProperty("--heart-color",colors[Math.floor(Math.random()*colors.length)]);
-    h.style.setProperty("--heart-size",(10+Math.random()*11)+"px");
-    h.style.setProperty("--heart-duration",(10+Math.random()*7)+"s");
-    h.style.setProperty("--heart-drift",(-35+Math.random()*70)+"px");
-    document.body.appendChild(h);
-    window.setTimeout(()=>h.remove(),18000);
-  }
-  for(let i=0;i<5;i++) window.setTimeout(addHeart,i*700);
-  window.setInterval(addHeart,1250);
-})();
+$("partnerBtn").addEventListener("click",()=>{const response=$("partnerResponse");response.hidden=!response.hidden;if(!response.hidden){hearts(20);toast("Dil ki baat, bina kisi pressure ke 💗")}});
 $("confettiBtn").addEventListener("click",()=>{hearts(30);toast("Birthday girl ki har baat sar-aankhon par! 🎉")});
 $("wishBtn").addEventListener("click",()=>{$("wishResult").textContent="Tumhari har achhi wish poori ho, meri jaan. Dher saara pyaar — aaj bhi, kal bhi. 💗";hearts(28)});
 function countdown(){const target=new Date(2026,9,26,0,0,0);let d=target-new Date();if(d<=0){$("days").textContent="🎂";$("hours").textContent="♡";$("minutes").textContent="♡";$("seconds").textContent="♡";$("countNote").textContent="Aaj tumhara din hai, meri Baby! Happy Birthday! 💗";return}const days=Math.floor(d/86400000);d%=86400000;const hours=Math.floor(d/3600000);d%=3600000;const minutes=Math.floor(d/60000);const seconds=Math.floor((d%60000)/1000);$("days").textContent=String(days).padStart(2,"0");$("hours").textContent=String(hours).padStart(2,"0");$("minutes").textContent=String(minutes).padStart(2,"0");$("seconds").textContent=String(seconds).padStart(2,"0")}
 countdown();setInterval(countdown,1000);
 if("IntersectionObserver"in window){const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");obs.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll(".reveal").forEach(s=>obs.observe(s))}else document.querySelectorAll(".reveal").forEach(s=>s.classList.add("visible"));
+
+const lowBtn=$("lowBtn");
+lowBtn.addEventListener("click",()=>{const note=$("lowNote");note.hidden=!note.hidden;lowBtn.textContent=note.hidden?"Meri baat sunogi, Baby? ♡":"Jab chaaho, ye message phir padhna ♡";if(!note.hidden){hearts(10);toast("Aaram se, meri jaan. Main sun raha hoon. 🫂")}});
+const giftBtn=$("giftBtn");
+giftBtn.addEventListener("click",()=>{const note=$("giftMessage");note.hidden=!note.hidden;giftBtn.classList.toggle("open",!note.hidden);giftBtn.setAttribute("aria-expanded",String(!note.hidden));$("giftEmoji").textContent=note.hidden?"🎁":"💝";$("giftLabel").textContent=note.hidden?"Open your little gift":"Your little gift is open ♡";if(!note.hidden){hearts(18);toast("Ek chhota sa surprise, sirf tumhare liye 🎁")}});
+const littleMessages=[
+"Baby, paani piya? Apna khayal rakhna bhi zaroori hai. 💗",
+"Aaj agar thak gayi ho toh thoda rest kar lena. Har cheez abhi karna zaroori nahi. 🌷",
+"Tumhe har waqt strong banne ki zaroorat nahi, meri jaan. 🫂",
+"Bas yaad dilana tha ki tumhari feelings matter karti hain. ♡",
+"Aaj apne liye bhi kuch achha karna—tum bhi care deserve karti ho. ✨",
+"Chahe din kaisa bhi ho, apne aap se pyaar aur narmi se baat karna. 💕",
+"Agar baat karne ka mann ho toh main sunne ki koshish karunga; aur space chahiye toh uski bhi respect hai. 🌙",
+"Tumhari value kisi ek din, ek mistake ya kisi ke opinion se decide nahi hoti. 💗"
+];
+let lastLittleMessage=0;
+$("messageBtn").addEventListener("click",()=>{let next;do{next=Math.floor(Math.random()*littleMessages.length)}while(next===lastLittleMessage);lastLittleMessage=next;$("randomMessage").textContent=littleMessages[next];hearts(5)});
